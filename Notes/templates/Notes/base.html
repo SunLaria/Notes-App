@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    {% load static %}
+    <script type="text/babel" src="{% static 'Notes/base.js'  %}" defer></script>
+    <link rel="stylesheet" href="{% static 'Notes/style.css'  %}" />
+</head>
+<body>
+    <script id="user-authenticated" type="text/json">{{ request.user.is_authenticated }}</script>
+    <script id="user_notes" type="text/json">{{ user_notes|safe }}</script>
+    <script id="message" type="text/json">{{ message }}</script>
+
+    <div id="nav">
+        
+    </div>
+    <div id="root">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>
