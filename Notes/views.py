@@ -9,7 +9,7 @@ import json
 
 @login_required(login_url='/login/')
 def home(request):
-    return render(request,'Notes/home.html',{"user_notes":json.dumps([i.to_dict() for i in request.user.note_set.all()])})
+    return render(request,'Notes/home.html',{"user_notes":json.dumps([i.to_dict(i.id) for i in request.user.note_set.all()])})
 
 @ensure_csrf_cookie
 def userlogin(request):
@@ -41,10 +41,10 @@ def add_note(request):
     if request.method=='POST':
         try:
             data = json.loads(request.body)
-            request.user.note_set.create(text=data.get('text'),color=data.get('text'))
+            request.user.note_set.create(text=data['body'].get('text'),color=data.get('text'))
             return JsonResponse(data={'id':request.user.note_set.last().id,'result':'Note Created'})
         except: 
-            return JsonResponse(data='Note Create Failed')
+            return JsonResponse(data={'result':'Note Create Failed'})
     else:
         return redirect('home')
     
@@ -54,10 +54,10 @@ def delete_note(request):
     if request.method=='POST':
         try:
             data = json.loads(request.body)
-            Note.objects.get(id=data.get('id')).delete()
-            return JsonResponse(data='Note Deleted')
+            Note.objects.get(id=data['body'].get('id')).delete()
+            return JsonResponse(data={'result':'Note Deleted'})
         except: 
-            return JsonResponse(data='Note Delete Failed')
+            return JsonResponse(data={'result':'Note Delete Failed'})
     else:
         return redirect('home')
 
@@ -67,13 +67,13 @@ def update_note(request):
     if request.method=='POST':
         try:
             data = json.loads(request.body)
-            note = Note.objects.get(id=data.get('id'))
-            note.text = data.get('text')
-            note.color = data.get('color')
+            note = Note.objects.get(id=data['body'].get('id'))
+            note.text = data['body'].get('text')
+            note.color = data['body'].get('color')
             note.save()
-            return JsonResponse(data='Note Updated')
+            return JsonResponse(data={'result':'Note Updated'})
         except: 
-            return JsonResponse(data='Note Update Failed')
+            return JsonResponse(data={'result':'Note Update Failed'})
     else:
         return redirect('home')
 
@@ -84,6 +84,6 @@ def get_notes(request):
         try:
             return JsonResponse(data={'result':"Success","user_notes":json.dumps([i.to_dict() for i in request.user.note_set.all()])})
         except: 
-            return JsonResponse(data='Note Update Failed')
+            return JsonResponse(data={'result':'Note Update Failed'})
     else:
         return redirect('home')

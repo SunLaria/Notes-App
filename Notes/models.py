@@ -11,5 +11,5 @@ class Note(models.Model):
     updated = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
-    def to_dict(self):
-        return {'text':self.text,'color':self.color,'updated':self.updated.strftime("%d-%m-%Y"),'created':self.created.strftime("%d-%m-%Y")}
+    def to_dict(self,i):
+        return {'id':i,'text':self.text,'color':self.color,'updated':self.updated.strftime("%d-%m-%Y"),'created':self.created.strftime("%d-%m-%Y")}
