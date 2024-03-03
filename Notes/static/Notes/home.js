@@ -20,8 +20,10 @@ function Note(p) {
             axios.post('/update-Note/',{body:{id:id,text:e.target.value} ,headers:{'Content-Type': 'application/json'}})
             .then((response)=>{ 
                 response.data['result']=="Note Updated"?console.log(`Note ${id}, Text Update: ${e.target.value}`):console.log('Failed to update the Note');})
-        setEdit(false);
         }
+        setEdit(false);
+        // this closes the edit mode
+        
     }
     const deleteEvent = (e) => {
         e.stopPropagation()
@@ -44,14 +46,13 @@ function Note(p) {
                 onDoubleClick={(e)=>{deleteEvent(e)}}
                 id={p.id}
             />
-            {/* {edit?<ColorPicker color={color} />:""} */}
-            <ColorPicker color={color} id={id} colorEvent={setColor} />
+            {edit?<ColorPicker color={color} id={id} colorEvent={setColor} editmode={setEdit} />:""}
+            {/* <ColorPicker color={color} id={id} colorEvent={setColor} /> */}
         </div>
     )
 }
 
 
-// style={{position: 'absolute'}}
 function ColorPicker(p) {
     const [color,setColor] = React.useState(p.color)
     const [id,setId] = React.useState(p.id)
@@ -62,10 +63,11 @@ function ColorPicker(p) {
         axios.post('/update-Note/',{body:{id:id,color:e.target.value} ,headers:{'Content-Type': 'application/json'}})
         .then((response)=>{ 
             response.data['result']=="Note Updated"?console.log(`Note ${id},Color Update: ${e.target.value}`):console.log('Failed to update the Note');})
+        p.editmode(false)
     }
     const colors = ["#FFFFFF",,"#ffe666","#f5c27d","#f6cebf","#e3b7d2","#bfe7f6"]
     return (
-        <label>
+        <label style={{position: 'fixed'}}>
             Color:
                 <select defaultValue={color} style={{background:color}} onChange={(e)=>{changeEvent(e)}}>
                     {colors.map((i,index)=>{
