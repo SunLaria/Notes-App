@@ -3,3 +3,22 @@
     flex-direction: row;
 }
 
+*:not(.note-card) {
+    user-select: none;
+}
+
+#user-notes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 60vh;
+    gap: 10px;
+}
+
+/* .note-card{
+
+} */
+
+/* #color-picker-button{
+    
+} */
