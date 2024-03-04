@@ -19,8 +19,7 @@ def userlogin(request):
             login(request, user)
             return redirect("/")
         else:
-            return redirect('/login',message="Login Failed")
-            # message not working
+            return redirect('/login', message="Error Logging In" )
     if request.method == "GET":
         return render(request,'Notes/login.html')
 
@@ -46,6 +45,12 @@ def update_note(request):
                 note.text = data['body'].get('text')
             if data['body'].get('color'):
                 note.color = data['body'].get('color')
+            if data['body'].get('width'):
+                note.width = data['body'].get('width')
+            if data['body'].get('height'):
+                note.height = data['body'].get('height')
+            if data['body'].get('font_size'):
+                note.font_size = data['body'].get('font_size')
             note.save()
             return JsonResponse(data={'result':'Note Updated'})
         except: 
@@ -83,7 +88,7 @@ def delete_note(request):
 def add_note(request):
     if request.method=='POST':
         try:
-            request.user.note_set.create(text="",color="")
+            request.user.note_set.create(text="",color="#FFFFFF",width='250px',height='233px',font_size="14")
             return JsonResponse(data={'id':request.user.note_set.last().id,'result':'Note Created'})
         except: 
             return JsonResponse(data={'result':'Note Create Failed'})

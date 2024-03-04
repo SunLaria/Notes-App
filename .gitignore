@@ -1,0 +1,5 @@
+Notes/__pycache__/models.cpython-311.pyc
+Notes/__pycache__/views.cpython-311.pyc
+Notes/migrations/__pycache__/0002_note_height_note_width.cpython-311.pyc
+Notes/migrations/__pycache__/0003_alter_note_height_alter_note_width.cpython-311.pyc
+Notes/migrations/__pycache__/0004_note_font_size.cpython-311.pyc

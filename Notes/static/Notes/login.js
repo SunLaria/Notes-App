@@ -11,12 +11,12 @@ function CsrfToken(){
 function LoginForm() {
     const [message, setMessage] = React.useState(document.getElementById("message").innerText)
     return (
-        <div id="form">
-            <form method='post'>
+        <div id="login-form-div">
+            <form method='post' id="login-form">
                 <CsrfToken/>
                 <input type="text" placeholder="Username" name="username" />
                 <input type="text" placeholder="Password" name="password" />
-                <button type="submit">Login</button>
+                <button id="login-button" type="submit">Login</button>
                 {message?<div id="message">{message}</div>:""}
             </form>
         </div>

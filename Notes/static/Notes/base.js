@@ -11,9 +11,7 @@ function UserButton() {
 
 function SiteName() {
     return(
-        <div id="site-name">
-        <h1>Notes</h1>
-        </div>
+        <div id="site-name">Notes</div>
     )
 }
 

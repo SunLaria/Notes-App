@@ -7,11 +7,17 @@
     user-select: none;
 }
 
+#content{
+    height: 65vh;
+    width: 85vw;
+    margin: 4vw;
+}
+
 #user-notes{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 60vh;
+    /* height: 60vh; */
     gap: 10px;
 }
 
@@ -19,6 +25,122 @@
     padding: 15px;
 }
 
-/* #color-picker-button{
-    
+textarea{
+    padding: 17px;
+    padding-right: 33px;
+    border-radius: 10px;
+}
+
+.color-picker{
+    position: absolute;
+    top:8px;
+    bottom: 0px;
+    right:10px;
+    padding: 0;
+    border: solid 2px rgb(160, 160, 160);
+    border-radius: 10px;
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.color-picker::-webkit-color-swatch {
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+}
+.color-picker::-webkit-color-swatch-wrapper {
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.size-tool{
+    position: absolute;
+    top:32px;
+    bottom: 0px;
+    right:10px;
+    height: 14px;
+    background: transparent;
+    width: 34px;
+    border: solid 2px rgb(160, 160, 160);
+    border-radius: 8px;
+}
+
+.size-tool::-webkit-inner-spin-button, 
+.size-tool::-webkit-outer-spin-button {  
+    opacity: 1;
+    cursor: pointer;
+}
+
+.note-date-info{
+    position: relative;
+}
+
+.date-divs{
+    display: flex;
+    gap: 5px;
+    font-size:x-small;
+    position: absolute;
+    bottom: 5px;
+    left:4px
+}
+
+#nav{
+    display: flex;
+    justify-content: space-around;
+    gap:27vw;
+    margin-top: 10vh;
+    padding-bottom: 3vh;
+    border-bottom: solid 3px black;
+    border-radius: 10px;
+}
+
+#site-name{
+    font-size: xx-large;
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: solid;
+    border-radius: 15px;
+    padding: 30px;
+    padding-bottom: 35px;
+}
+
+#login-form-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+/* #login-button{
+    width: 6vw;
+    margin-left: 2.5vw;
 } */
+
+button{
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 6px 16px;
+  user-select: none;
+  /* word-wrap: break-word; */
+}
+
+button:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
