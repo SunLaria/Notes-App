@@ -1,10 +1,13 @@
 const nav = ReactDOM.createRoot(document.getElementById('nav'));
 
+const cookiesDict = Object.fromEntries(document.cookie.split(";").map((i) => [i.split("=")[0].replaceAll(" ",""), i.split("=")[1]]));
+
+
 function UserButton() {
-    const [authenticated, setAuth] = React.useState(document.getElementById('user-authenticated').innerText)
+    const [authenticated, setAuth] = React.useState(cookiesDict['user-authenticated'])
     return (
         <div id="auth-button">
-        {authenticated=="True"?<a href="/logout"><button>LogOut</button></a>:<a href="/login"><button>Login</button></a>}
+        {authenticated?<a href="/logout"><button>LogOut</button></a>:<a href="/login"><button>Login</button></a>}
         </div>
     )
 }

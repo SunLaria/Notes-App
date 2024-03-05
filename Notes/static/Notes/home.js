@@ -1,5 +1,9 @@
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const csrfToken = document.cookie.split('csrftoken=')[1]
+
+const cookiesDict = Object.fromEntries(document.cookie.split(";").map((i) => [i.split("=")[0].replaceAll(" ",""), i.split("=")[1]]));
+
+const csrfToken  = cookiesDict.csrftoken
+
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
 

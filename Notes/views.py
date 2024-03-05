@@ -9,7 +9,10 @@ import json
 
 @login_required(login_url='/login/')
 def home(request):
-    return render(request,'Notes/home.html')
+    response = render(request,'Notes/home.html')
+    response.set_cookie(key='user-authenticated', value="true",path="/")
+    response.delete_cookie('message',"/login")
+    return response
 
 @ensure_csrf_cookie
 def userlogin(request):
@@ -17,41 +20,33 @@ def userlogin(request):
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user:
             login(request, user)
-            return redirect("/")
+            response = redirect("/")
+            return response
         else:
-            return redirect('/login', message="Error Logging In" )
+            response = redirect("/login")
+            response.set_cookie(key='message',value='Error Logging In',path="/login")
+            return response
     if request.method == "GET":
-        return render(request,'Notes/login.html')
+        response = render(request,'Notes/login.html')
+        return response
 
 
 @login_required(login_url='/login/')
 def userlogout(request):
     if request.method=="GET":
         logout(request)
-        return redirect('login')
+        response = redirect('/login')
+        response.delete_cookie('user-authenticated', '/')
+        return response
     
-
-# axios.post(,{'content-type': 'application/json})
     
-
 # id,text,color
 @login_required(login_url='/login/')
 def update_note(request):
     if request.method=='POST':
         try:
             data = json.loads(request.body)
-            note = Note.objects.get(id=data['body'].get('id'))
-            if data['body'].get('text'):
-                note.text = data['body'].get('text')
-            if data['body'].get('color'):
-                note.color = data['body'].get('color')
-            if data['body'].get('width'):
-                note.width = data['body'].get('width')
-            if data['body'].get('height'):
-                note.height = data['body'].get('height')
-            if data['body'].get('font_size'):
-                note.font_size = data['body'].get('font_size')
-            note.save()
+            Note.objects.filter(id=data['body'].get('id')).update(**data["body"])
             return JsonResponse(data={'result':'Note Updated'})
         except: 
             return JsonResponse(data={'result':'Note Update Failed'})
