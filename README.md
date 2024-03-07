@@ -35,5 +35,7 @@ Navigate to http://localhost:8000/ or http://127.0.0.1:8000/
 # Additional Information
 
 This Project Is Written in Python, ReactJS, HTML, CSS in Djnago FrameWork.
+
 All Site Elements are Written in ReactJS
+
 Added WhiteNoise module for staticfiles to work with docker
