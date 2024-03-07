@@ -38,4 +38,6 @@ Navigate to http://localhost:8000/ or http://127.0.0.1:8000/
 
 - All Site Elements are Written in ReactJS
 
-- Added WhiteNoise module for staticfiles to work with docker
+- Note Crud API Operations are Request by Axios 
+
+- Added WhiteNoise module for staticfiles to work with Docker
