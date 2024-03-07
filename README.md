@@ -14,7 +14,7 @@ Save Your Notes, Customzie it with font size, colors, and note size.
 
 - Change the color of the note using the Color Palette.
 
-# How to Run:
+# How to Setup:
 Docker:
 ```
 docker run -p 8000:8000 docker.io/randomg1/notes-app:1
@@ -28,7 +28,7 @@ python -m pip install -r requirements.txt
 python ./manage.py runserver
 ```
 
-### After Setup:
+### How To Run:
 Navigate to http://localhost:8000/ or http://127.0.0.1:8000/
 
 
