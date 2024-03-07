@@ -15,17 +15,15 @@ Change the font size using the arrows in the note.
 Change the color of the note using the Color Palette.
 
 # How to Run:
-## Docker
-Using Docker:
+Docker:
 ```
 docker run -p 8000:8000 docker.io/randomg1/notes-app:1
 ```
 
-## Local
+Locally:
 ```
-mkdir Notes-App
-cd Notes-App
 git clone https://github.com/SunLaria/Notes-App.git
+cd Notes-App
 python -m pip install -r requirements.txt
 python ./manage.py runserver
 ```
@@ -38,4 +36,4 @@ Navigate to http://localhost:8000
 
 This Project Is Written in Python, ReactJS, HTML, CSS in Djnago FrameWork.
 All Site Elements are Written in ReactJS
-Added WhiteNoise for staticfiles to work with docker
+Added WhiteNoise module for staticfiles to work with docker
