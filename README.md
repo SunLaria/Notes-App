@@ -29,7 +29,7 @@ python ./manage.py runserver
 ```
 
 ### After Setup:
-Navigate to http://localhost:8000
+Navigate to http://localhost:8000/ or http://127.0.0.1:8000/
 
 
 # Additional Information
