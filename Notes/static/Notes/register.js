@@ -10,18 +10,17 @@ function CsrfToken(){
 }
 
 
-function LoginForm() {
+function RegisterForm() {
     const [message, setMessage] = React.useState(cookiesDict.message)
     return (
-        <div id="login-form-div">
-            <form method='post' id="login-form">
+        <div id="register-form-div">
+            <form method='post' id="register-form">
                 <CsrfToken/>
                 <input type="text" placeholder="Username" name="username" />
                 <input type="password" placeholder="Password" name="password" />
-                <button id="login-button" type="submit">Login</button>
+                <button id="register-button" type="submit">Register</button>
+                {message?<div id="message">{message.slice(1,-1)}</div>:""}
             </form>
-            <button id="register-button" onClick={()=>{location.href='/register'}} >Register</button>
-            {message?<div id="message">{message.slice(1,-1)}</div>:""}
         </div>
     )
 }
@@ -29,7 +28,7 @@ function LoginForm() {
 function Main() {
     return (
         <>
-        <LoginForm />
+        <RegisterForm />
         </>
 
     )

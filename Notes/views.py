@@ -12,6 +12,7 @@ def home(request):
     response = render(request,'Notes/home.html')
     response.set_cookie(key='user-authenticated', value="true",path="/")
     response.delete_cookie('message',"/login")
+    response.delete_cookie('message',"/register")
     return response
 
 @ensure_csrf_cookie
@@ -21,6 +22,7 @@ def userlogin(request):
         if user:
             login(request, user)
             response = redirect("/")
+            response.delete_cookie('message',"/register")
             return response
         else:
             response = redirect("/login")
@@ -37,8 +39,37 @@ def userlogout(request):
         logout(request)
         response = redirect('/login')
         response.delete_cookie('user-authenticated', '/')
+        response.delete_cookie('message',"/login")
         return response
-    
+
+def register(request):
+    if request.method=="GET":
+        return render(request, 'Notes/register.html')
+    if request.method=="POST":
+        try:
+            if request.POST['username'] != "" and request.POST['password'] != "":
+                if len(User.objects.filter(username=request.POST['username'])) == 0:
+                    user = User.objects.create_user(username=request.POST['username'],password=request.POST['password'])
+                    user.save()
+                    response = redirect('/login')
+                    response.set_cookie(key='message',value='User Created Succesfully',path="/login")
+                    return response
+                else:
+                    response = redirect('/register')
+                    response.set_cookie(key='message',value='Username Already Exists',path="/register")
+                    return response
+            else:
+                response = redirect('/register')
+                response.set_cookie(key='message',value='Empty Fields',path="/register")
+                return response
+
+        except:
+            response = redirect('/register')
+            response.set_cookie(key='message',value='User Creation Failed',path="/register")
+            return response
+
+
+
     
 # id,text,color
 @login_required(login_url='/login/')

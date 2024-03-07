@@ -14,7 +14,7 @@ function UserButton() {
 
 function SiteName() {
     return(
-        <div id="site-name">Notes</div>
+        <div id="site-name" onClick={()=>{location.href='/'}}>Notes</div>
     )
 }
 
