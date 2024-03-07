@@ -2,7 +2,7 @@
 
 Save Your Notes, Customzie it with font size, colors, and note size.
 
-# How To Use
+## How To Use
 
 - Double click the empty space to create a new Note.
 
@@ -14,7 +14,7 @@ Save Your Notes, Customzie it with font size, colors, and note size.
 
 - Change the color of the note using the Color Palette.
 
-# How to Setup:
+## How to Setup:
 Docker:
 ```
 docker run -p 8000:8000 docker.io/randomg1/notes-app:1
@@ -28,11 +28,11 @@ python -m pip install -r requirements.txt
 python ./manage.py runserver
 ```
 
-# How To Run:
+## How To Run:
 Navigate to http://localhost:8000/ or http://127.0.0.1:8000/
 
 
-# Additional Information
+## Additional Information
 
 - This Project Is Written in Python, ReactJS, HTML, CSS in Djnago FrameWork.
 
