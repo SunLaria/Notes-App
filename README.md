@@ -4,15 +4,15 @@ Save Your Notes, Customzie it with font size, colors, and note size.
 
 # How To Use
 
-Double click the empty space to create a new Note.
+- Double click the empty space to create a new Note.
 
-Double click the Note To delete it.
+- Double click the Note To delete it.
 
-Strech The Note to change its size.
+- Strech The Note to change its size.
 
-Change the font size using the arrows in the note.
+- Change the font size using the arrows in the note.
 
-Change the color of the note using the Color Palette.
+- Change the color of the note using the Color Palette.
 
 # How to Run:
 Docker:
