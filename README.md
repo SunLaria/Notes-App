@@ -1,6 +1,6 @@
 # Notes App
 
-Save Your Notes, Customzie it with font size, colors, and note size.
+Save Your Notes, Customzie the Note with font size, colors, and size.
 
 ## How To Use
 
